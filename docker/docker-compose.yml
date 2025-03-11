@@ -10,13 +10,20 @@ services:
     container_name: ragflow-server
     ports:
       - ${SVR_HTTP_PORT}:9380
-      - 80:80
-      - 443:443
+      - ${FRONT_HTTP_PORT}:80
+      - ${FRONT_HTTPS_PORT}:443
     volumes:
       - ./ragflow-logs:/ragflow/logs
       - ./nginx/ragflow.conf:/etc/nginx/conf.d/ragflow.conf
       - ./nginx/proxy.conf:/etc/nginx/proxy.conf
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      # 代码目录映射
+      - ../agent:/ragflow/agent
+      - ../agentic_reasoning:/ragflow/agentic_reasoning
+      - ../api:/ragflow/api
+      - ../deepdoc:/ragflow/deepdoc
+      - ../graphrag:/ragflow/graphrag
+      - ../rag:/ragflow/rag
     env_file: .env
     environment:
       - TZ=${TIMEZONE}
