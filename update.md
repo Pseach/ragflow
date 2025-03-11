@@ -180,3 +180,13 @@ git push origin feature-v0.17
 ```
 
 这种方法确保你既能及时获取上游更新，又能保留自己的更改，并推送到个人仓库，流程简洁且安全。
+
+# docker compose脚本
+
+```bash
+  docker compose -p ragflow down -v
+```
+
+```bash
+  docker compose -f docker/docker-compose.yml --project-name ragflow up -d
+```
